@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Soda Venkata Revanth Reddy - Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --ink: #0a0a0f;
+    --ink-muted: #52525e;
+    --ink-faint: #9898a8;
+    --surface: #ffffff;
+    --surface-alt: #f5f5f9;
+    --surface-card: #fafafa;
+    --accent: #b45309;
+    --accent-bright: #d97706;
+    --accent-light: #fef3c7;
+    --accent-mid: #f59e0b;
+    --border: rgba(180,83,9,0.1);
+    --border-strong: rgba(180,83,9,0.18);
+    --radius: 12px;
+    --radius-sm: 8px;
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-body);
+    background: var(--surface);
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2.5rem; height: 56px;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+  }
+  .nav-logo {
+    font-family: var(--font-display);
+    font-weight: 700; font-size: 16px; color: var(--accent);
+    letter-spacing: -0.2px;
+  }
+  .nav-links { display: flex; gap: 1.75rem; list-style: none; }
+  .nav-links a {
+    text-decoration: none; font-size: 13px;
+    color: var(--ink-muted); font-weight: 400;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent-bright); }
+
+  section { padding: 5rem 2.5rem; max-width: 900px; margin: 0 auto; }
+
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 100px 2.5rem 4rem;
+    max-width: 900px; margin: 0 auto;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--accent-light); color: var(--accent);
+    font-size: 12px; font-weight: 600;
+    padding: 5px 14px; border-radius: 100px;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.5px; text-transform: uppercase;
+  }
+  .hero-tag::before {
+    content: ''; width: 6px; height: 6px;
+    border-radius: 50%; background: var(--accent-mid); display: inline-block;
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 6vw, 4.2rem);
+    font-weight: 700; line-height: 1.08;
+    letter-spacing: -1.2px; color: var(--ink);
+    margin-bottom: 1.5rem; max-width: 720px;
+  }
+  .hero h1 .accent-word { color: var(--accent-bright); }
+  .hero-desc {
+    font-size: 17px; color: var(--ink-muted);
+    max-width: 560px; line-height: 1.78;
+    margin-bottom: 2.5rem; font-weight: 300;
+  }
+  .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--accent); color: white;
+    padding: 12px 24px; border-radius: var(--radius-sm);
+    font-size: 14px; font-weight: 500;
+    text-decoration: none; transition: background 0.2s, transform 0.15s;
+    border: none; cursor: pointer; font-family: var(--font-body);
+  }
+  .btn-primary:hover { background: var(--accent-bright); transform: translateY(-1px); }
+  .btn-outline {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: transparent; color: var(--ink);
+    padding: 12px 24px; border-radius: var(--radius-sm);
+    font-size: 14px; font-weight: 500;
+    text-decoration: none; border: 1px solid var(--border-strong);
+    transition: border-color 0.2s, background 0.2s; cursor: pointer;
+    font-family: var(--font-body);
+  }
+  .btn-outline:hover { border-color: var(--accent-mid); background: var(--accent-light); }
+  .hero-meta {
+    display: flex; gap: 2.5rem; margin-top: 3.5rem;
+    padding-top: 2rem; border-top: 0.5px solid var(--border);
+  }
+  .meta-num {
+    font-family: var(--font-display);
+    font-size: 1.7rem; font-weight: 700;
+    color: var(--accent); line-height: 1;
+  }
+  .meta-label {
+    font-size: 12px; color: var(--ink-faint);
+    margin-top: 3px; text-transform: uppercase; letter-spacing: 0.5px;
+  }
+
+  .section-label {
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--accent-mid); margin-bottom: 0.5rem;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 700; letter-spacing: -0.4px;
+    color: var(--ink); margin-bottom: 2.5rem; line-height: 1.2;
+  }
+
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 2rem; align-items: start;
+  }
+  .about-text p {
+    color: var(--ink-muted); margin-bottom: 1rem;
+    font-size: 15px; line-height: 1.8;
+  }
+  .about-tagline {
+    font-family: var(--font-display);
+    font-size: 1.05rem; font-weight: 600;
+    color: var(--accent);
+    background: var(--accent-light);
+    border-left: 3px solid var(--accent-mid);
+    padding: 1rem 1.25rem;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    margin-top: 1.5rem; line-height: 1.5;
+  }
+  .about-side {
+    background: var(--surface-card);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius); padding: 1.5rem;
+  }
+  .about-side h4 {
+    font-family: var(--font-display);
+    font-size: 12px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.8px;
+    color: var(--ink-faint); margin-bottom: 1rem;
+  }
+  .about-detail {
+    display: flex; align-items: flex-start; gap: 10px; margin-bottom: 0.85rem;
+  }
+  .about-detail-icon {
+    width: 28px; height: 28px;
+    background: var(--accent-light); border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; font-size: 13px;
+  }
+  .about-detail-text { font-size: 13px; color: var(--ink-muted); line-height: 1.5; }
+  .about-detail-text strong { color: var(--ink); font-weight: 500; display: block; font-size: 13px; }
+
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+  .skill-card {
+    background: var(--surface-card);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius); padding: 1.5rem;
+  }
+  .skill-card-icon {
+    width: 36px; height: 36px;
+    background: var(--accent-light); border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1rem; font-size: 16px;
+  }
+  .skill-card h3 {
+    font-family: var(--font-display);
+    font-size: 14px; font-weight: 600;
+    color: var(--ink); margin-bottom: 0.85rem;
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .skill-tag {
+    background: var(--surface-alt);
+    border: 0.5px solid var(--border);
+    color: var(--ink-muted); font-size: 12px;
+    padding: 4px 10px; border-radius: 100px; font-weight: 400;
+  }
+  .skill-tag.highlight {
+    background: var(--accent-light);
+    border-color: rgba(180,83,9,0.2);
+    color: var(--accent); font-weight: 500;
+  }
+
+  /* INTERNSHIPS */
+  .internship-list { display: flex; flex-direction: column; gap: 1.25rem; }
+  .internship-card {
+    background: var(--surface-card);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius); padding: 1.75rem;
+    transition: border-color 0.2s;
+  }
+  .internship-card:hover { border-color: var(--accent-mid); }
+  .internship-header {
+    display: flex; align-items: flex-start; justify-content: space-between;
+    margin-bottom: 0.85rem; gap: 1rem;
+  }
+  .internship-title {
+    font-family: var(--font-display);
+    font-size: 1rem; font-weight: 700; color: var(--ink);
+  }
+  .internship-org {
+    font-size: 13px; color: var(--accent-bright);
+    font-weight: 500; margin-bottom: 8px;
+  }
+  .internship-date {
+    font-size: 11px; font-weight: 500;
+    background: var(--accent-light); color: var(--accent);
+    padding: 4px 10px; border-radius: 100px;
+    white-space: nowrap; letter-spacing: 0.3px;
+  }
+  .internship-points { list-style: none; }
+  .internship-points li {
+    font-size: 13.5px; color: var(--ink-muted);
+    padding: 4px 0 4px 18px;
+    position: relative; line-height: 1.65;
+  }
+  .internship-points li::before {
+    content: '→'; position: absolute; left: 0;
+    color: var(--accent-mid); font-size: 12px;
+  }
+
+  .projects-list { display: flex; flex-direction: column; gap: 1.5rem; }
+  .project-card {
+    background: var(--surface-card);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius); padding: 1.75rem;
+    transition: border-color 0.2s;
+  }
+  .project-card:hover { border-color: var(--accent-mid); }
+  .project-header {
+    display: flex; align-items: flex-start; justify-content: space-between;
+    margin-bottom: 0.85rem; gap: 1rem;
+  }
+  .project-title {
+    font-family: var(--font-display);
+    font-size: 1.05rem; font-weight: 700; color: var(--ink);
+  }
+  .project-badge {
+    font-size: 11px; font-weight: 500;
+    background: var(--accent-light); color: var(--accent);
+    padding: 4px 10px; border-radius: 100px;
+    white-space: nowrap; letter-spacing: 0.3px;
+  }
+  .project-desc {
+    color: var(--ink-muted); font-size: 14px;
+    line-height: 1.75; margin-bottom: 1.25rem;
+  }
+  .project-points { list-style: none; margin-bottom: 1.25rem; }
+  .project-points li {
+    font-size: 13.5px; color: var(--ink-muted);
+    padding: 4px 0 4px 18px;
+    position: relative; line-height: 1.65;
+  }
+  .project-points li::before {
+    content: '→'; position: absolute; left: 0;
+    color: var(--accent-mid); font-size: 12px;
+  }
+  .project-tech { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tech-tag {
+    background: var(--surface);
+    border: 0.5px solid var(--border-strong);
+    color: var(--ink); font-size: 11px; font-weight: 500;
+    padding: 3px 9px; border-radius: 4px; letter-spacing: 0.2px;
+  }
+
+  .education-list { display: flex; flex-direction: column; gap: 1rem; }
+  .edu-card {
+    display: flex; gap: 1.25rem; align-items: flex-start;
+    background: var(--surface-card);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius); padding: 1.5rem;
+  }
+  .edu-year {
+    font-family: var(--font-display);
+    font-size: 12px; font-weight: 600;
+    color: var(--accent-mid); min-width: 90px; padding-top: 3px;
+  }
+  .edu-body h3 {
+    font-family: var(--font-display);
+    font-weight: 600; font-size: 15px;
+    color: var(--ink); margin-bottom: 3px;
+  }
+  .edu-body .edu-inst { font-size: 13px; color: var(--ink-muted); margin-bottom: 4px; }
+  .edu-score {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: var(--accent-light); color: var(--accent);
+    font-size: 12px; font-weight: 600;
+    padding: 3px 10px; border-radius: 100px; margin-top: 4px;
+  }
+
+  .cert-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .cert-card {
+    background: var(--surface-card);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem 1.5rem;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .cert-icon {
+    width: 36px; height: 36px; flex-shrink: 0;
+    background: var(--accent-light); border-radius: 8px;
+    display: flex; align-items: center; justify-content: center; font-size: 16px;
+  }
+  .cert-body h4 {
+    font-size: 13.5px; font-weight: 500;
+    color: var(--ink); margin-bottom: 3px; line-height: 1.4;
+    font-family: var(--font-display);
+  }
+  .cert-body p { font-size: 12px; color: var(--ink-faint); line-height: 1.5; }
+
+  .contact-wrapper {
+    background: var(--accent); border-radius: 16px; padding: 3rem; color: white;
+  }
+  .contact-wrapper .section-label { color: var(--accent-mid); }
+  .contact-wrapper .section-title { color: white; margin-bottom: 1rem; }
+  .contact-tagline {
+    color: rgba(255,255,255,0.65); font-size: 15px;
+    margin-bottom: 2.5rem; max-width: 480px;
+  }
+  .contact-links { display: flex; flex-wrap: wrap; gap: 1rem; }
+  .contact-link {
+    display: flex; align-items: center; gap: 10px;
+    background: rgba(255,255,255,0.12);
+    border: 0.5px solid rgba(255,255,255,0.22);
+    padding: 12px 18px; border-radius: var(--radius-sm);
+    text-decoration: none; color: white; font-size: 13.5px;
+    transition: background 0.2s;
+  }
+  .contact-link:hover { background: rgba(255,255,255,0.2); }
+  .contact-link-icon {
+    width: 20px; height: 20px;
+    background: rgba(255,255,255,0.18); border-radius: 5px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; flex-shrink: 0;
+  }
+
+  .section-divider {
+    height: 0.5px; background: var(--border);
+    max-width: 900px; margin: 0 auto;
+  }
+
+  footer {
+    text-align: center; padding: 2rem;
+    font-size: 12px; color: var(--ink-faint);
+    border-top: 0.5px solid var(--border);
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo">Revanth Reddy</span>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#internships">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">Open to Internships & Opportunities</div>
+  <h1>Engineering clean code,<br><span class="accent-word">one layer at a time.</span></h1>
+  <p class="hero-desc">
+    Hi, I'm Revanth — an aspiring Software Engineer with a 9.5 CGPA, hands-on experience in web development and AI, and a mindset built for solving real problems with clean, scalable code.
+  </p>
+  <div class="hero-cta">
+    <a href="#projects" class="btn-primary">View My Projects ↓</a>
+    <a href="#contact" class="btn-outline">Get In Touch</a>
+  </div>
+  <div class="hero-meta">
+    <div>
+      <div class="meta-num">9.5</div>
+      <div class="meta-label">Current CGPA</div>
+    </div>
+    <div>
+      <div class="meta-num">2</div>
+      <div class="meta-label">Internships</div>
+    </div>
+    <div>
+      <div class="meta-num">5</div>
+      <div class="meta-label">Certifications</div>
+    </div>
+    <div>
+      <div class="meta-num">3+</div>
+      <div class="meta-label">Languages Known</div>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">Who I Am</div>
+  <div class="section-title">A developer who builds with<br>purpose and precision</div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>
+        I'm Soda Venkata Revanth Reddy, a B.Tech Computer Science Engineering student at Mohan Babu University, Tirupati — maintaining a strong 9.5 CGPA. I specialize in building web applications and have real-world experience applying AI for sustainability through an IBM SkillsBuild internship.
+      </p>
+      <p>
+        My academic journey reflects consistent excellence — 98.1% in 10th and 96.9% in Intermediate — but what truly motivates me is the craft of building software that's scalable, clean, and user-focused. From developing responsive e-commerce platforms to designing mental health UIs as part of a team, I've always brought both technical rigor and empathy to my work.
+      </p>
+      <p>
+        I'm proficient in C, Java, and web technologies, and I'm actively building expertise in full-stack development and AI applications. I thrive in collaborative environments and adapt quickly to new challenges.
+      </p>
+      <div class="about-tagline">
+        "I write code that scales — and I build products that people actually want to use."
+      </div>
+    </div>
+    <div class="about-side">
+      <h4>Quick Info</h4>
+      <div class="about-detail">
+        <div class="about-detail-icon">🎓</div>
+        <div class="about-detail-text">
+          <strong>Degree</strong>B.Tech CSE, Sept 2023 – Present
+        </div>
+      </div>
+      <div class="about-detail">
+        <div class="about-detail-icon">🏛️</div>
+        <div class="about-detail-text">
+          <strong>University</strong>Mohan Babu University, Tirupati
+        </div>
+      </div>
+      <div class="about-detail">
+        <div class="about-detail-icon">📍</div>
+        <div class="about-detail-text">
+          <strong>Location</strong>Giddalur, Andhra Pradesh
+        </div>
+      </div>
+      <div class="about-detail">
+        <div class="about-detail-icon">🤖</div>
+        <div class="about-detail-text">
+          <strong>Experience In</strong>AI Internship, Frontend Dev
+        </div>
+      </div>
+      <div class="about-detail">
+        <div class="about-detail-icon">💻</div>
+        <div class="about-detail-text">
+          <strong>Core Stack</strong>C, Java, HTML, CSS, JavaScript
+        </div>
+      </div>
+      <div class="about-detail">
+        <div class="about-detail-icon">⚡</div>
+        <div class="about-detail-text">
+          <strong>Currently Learning</strong>Full Stack Dev, Agentic AI
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Capabilities</div>
+  <div class="section-title">Skills & Technologies</div>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-card-icon">💻</div>
+      <h3>Programming</h3>
+      <div class="skill-tags">
+        <span class="skill-tag highlight">Java</span>
+        <span class="skill-tag highlight">C</span>
+        <span class="skill-tag">PHP Basics</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">🌐</div>
+      <h3>Web Development</h3>
+      <div class="skill-tags">
+        <span class="skill-tag highlight">HTML</span>
+        <span class="skill-tag highlight">CSS</span>
+        <span class="skill-tag highlight">JavaScript</span>
+        <span class="skill-tag">Responsive UI</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">🗄️</div>
+      <h3>Database</h3>
+      <div class="skill-tags">
+        <span class="skill-tag highlight">SQL</span>
+        <span class="skill-tag">Frontend-Backend Integration</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">🤖</div>
+      <h3>AI & Emerging Tech</h3>
+      <div class="skill-tags">
+        <span class="skill-tag highlight">Agentic AI</span>
+        <span class="skill-tag">RAG Systems</span>
+        <span class="skill-tag">Responsible AI</span>
+        <span class="skill-tag">UN SDGs</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">🛠️</div>
+      <h3>Tools</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Git</span>
+        <span class="skill-tag">GitHub</span>
+        <span class="skill-tag">VS Code</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">🤝</div>
+      <h3>Soft Skills</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Communication</span>
+        <span class="skill-tag">Teamwork</span>
+        <span class="skill-tag">Adaptability</span>
+        <span class="skill-tag">Problem Solving</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- INTERNSHIPS -->
+<section id="internships">
+  <div class="section-label">Real-World Experience</div>
+  <div class="section-title">Internships</div>
+  <div class="internship-list">
+
+    <div class="internship-card">
+      <div class="internship-header">
+        <div>
+          <div class="internship-title">AI for Sustainability — Virtual Internship</div>
+          <div class="internship-org">1M1B & IBM SkillsBuild</div>
+        </div>
+        <span class="internship-date">Dec 2025 – Jan 2026</span>
+      </div>
+      <ul class="internship-points">
+        <li>Explored practical applications of Agentic AI and Retrieval-Augmented Generation (RAG) systems to address real-world sustainability challenges</li>
+        <li>Applied Responsible AI principles aligned with United Nations Sustainable Development Goals (UN SDGs), gaining a structured understanding of ethical AI deployment</li>
+        <li>Completed hands-on modules through IBM SkillsBuild, bridging academic knowledge with industry-relevant AI skills</li>
+      </ul>
+    </div>
+
+    <div class="internship-card">
+      <div class="internship-header">
+        <div>
+          <div class="internship-title">Frontend Developer — MindEase</div>
+          <div class="internship-org">Team Project</div>
+        </div>
+        <span class="internship-date">Academic Project</span>
+      </div>
+      <ul class="internship-points">
+        <li>Designed and developed a fully responsive UI for a student mental-health web application, prioritizing accessibility and emotional usability</li>
+        <li>Implemented interactive features including mood tracking functionality, enhancing user engagement and wellbeing awareness</li>
+        <li>Collaborated cross-functionally within a team to deliver a cohesive, user-centric product within project timelines</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">What I've Built</div>
+  <div class="section-title">Projects</div>
+  <div class="projects-list">
+
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-title">E-Commerce Web Application</div>
+        <span class="project-badge">Full Stack App</span>
+      </div>
+      <p class="project-desc">
+        A fully responsive e-commerce platform built with industry-standard coding practices — featuring product listings, seamless navigation, and a functional shopping cart backed by frontend-backend integration.
+      </p>
+      <ul class="project-points">
+        <li>Developed a responsive product listing interface with smooth navigation and intuitive browsing experience</li>
+        <li>Implemented a fully functional shopping cart with frontend-backend integration, enabling real-time cart updates</li>
+        <li>Followed industry-standard project structure and coding practices to ensure scalability, maintainability, and clean architecture</li>
+      </ul>
+      <div class="project-tech">
+        <span class="tech-tag">HTML</span>
+        <span class="tech-tag">CSS</span>
+        <span class="tech-tag">JavaScript</span>
+        <span class="tech-tag">SQL</span>
+        <span class="tech-tag">PHP</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-label">Academic Background</div>
+  <div class="section-title">Education</div>
+  <div class="education-list">
+    <div class="edu-card">
+      <div class="edu-year">2023–Present</div>
+      <div class="edu-body">
+        <h3>Bachelor of Technology — Computer Science Engineering</h3>
+        <div class="edu-inst">Mohan Babu University, Tirupati, Andhra Pradesh</div>
+        <div class="edu-score">⭐ CGPA: 9.5 / 10</div>
+      </div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-year">2021–2023</div>
+      <div class="edu-body">
+        <h3>Intermediate — Science (MPC)</h3>
+        <div class="edu-inst">NRI Junior College, Guntur, Andhra Pradesh</div>
+        <div class="edu-score">⭐ 96.9%</div>
+      </div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-year">2020–2021</div>
+      <div class="edu-body">
+        <h3>10th Grade — SSC Board</h3>
+        <div class="edu-inst">Surya Vidhyanikethan, Giddalur, Andhra Pradesh</div>
+        <div class="edu-score">⭐ 98.1%</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="section-label">Credentials</div>
+  <div class="section-title">Certifications & Achievements</div>
+  <div class="cert-grid">
+    <div class="cert-card">
+      <div class="cert-icon">☕</div>
+      <div class="cert-body">
+        <h4>Certificate of Completion — Java</h4>
+        <p>GeeksForGeeks — Validated core Java programming skills including OOP, data structures, and problem-solving techniques.</p>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🛒</div>
+      <div class="cert-body">
+        <h4>SCOA Training Program for Aspiring Professionals</h4>
+        <p>Flipkart — Completed structured training on professional readiness, commerce operations, and career development.</p>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🌐</div>
+      <div class="cert-body">
+        <h4>Web Development for Beginners</h4>
+        <p>SimplyLearn — Built a solid foundation in modern web development covering HTML, CSS, and JavaScript fundamentals.</p>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🏢</div>
+      <div class="cert-body">
+        <h4>ION Career Edge — Young Professional</h4>
+        <p>TCS — Completed professional skills training covering workplace readiness, communication, and career-building strategies.</p>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🏆</div>
+      <div class="cert-body">
+        <h4>Certificate of Participation — XHORIZON</h4>
+        <p>Participated in XHORIZON, demonstrating initiative and engagement in a competitive technical event environment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-wrapper">
+    <div class="section-label">Let's Connect</div>
+    <div class="section-title">Open to opportunities</div>
+    <p class="contact-tagline">I'm actively seeking internships, team projects, and entry-level software engineering roles. Let's build something impactful together.</p>
+    <div class="contact-links">
+      <a href="mailto:revanth4272@gmail.com" class="contact-link">
+        <span class="contact-link-icon">✉</span>
+        revanth4272@gmail.com
+      </a>
+      <a href="tel:+917093293075" class="contact-link">
+        <span class="contact-link-icon">📞</span>
+        +91 70932 93075
+      </a>
+      <a href="https://github.com" target="_blank" class="contact-link">
+        <span class="contact-link-icon">⌥</span>
+        GitHub Profile
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Designed & built with care · Soda Venkata Revanth Reddy · 2025
+</footer>
+
+</body>
+</html>
